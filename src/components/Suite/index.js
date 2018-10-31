@@ -13,7 +13,9 @@ class Suite extends Component {
     coords: { x: 0, y: 0, z: 0 },
     rotateX: 0,
     rotateY: 0,
-    sketchName: 'sphere'
+    sketchName: 'sphere',
+    xLightPos: 0,
+    yLightPos: 0
   }
   
   componentDidMount() {
@@ -39,6 +41,7 @@ class Suite extends Component {
     let instruction, stateAttrVal;
     
     if (parentAttr) {
+      // attribute is nested 
       stateAttrVal = this.state[parentAttr][attrName]
       const parentStateAttr = this.state[parentAttr]
       instruction = { [parentAttr]: {...parentStateAttr, [attrName]: stateAttrVal + (direction * 1)} }
@@ -55,8 +58,7 @@ class Suite extends Component {
 
     return (
       <div className="App">
-
-        <Log output={this.state} title={sketchName}></Log>
+        <Log output={this.state} title={sketchName} ignore={['time']}></Log>
         <P5Wrapper 
           sketch={sketch} 
           {...this.state}
@@ -64,6 +66,11 @@ class Suite extends Component {
         <ul>
           <ControlPanel attributes={this.state} cb={this.handleCommand} blocked={['time', 'sketchName']}/>
         </ul>
+        <div>
+          <input onChange={({target: {value }}) => this.setState({xLightPos: Number(value)})}></input>
+          <input onChange={({target: {value }}) => this.setState({yLightPos: Number(value)})}></input>
+
+        </div>
       </div>
     );
   }

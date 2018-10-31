@@ -3,11 +3,12 @@ import './style.css';
 
 class Log extends Component {
   handleOutput = () => {
-    const { output } = this.props;
+    const { output, ignore } = this.props;
 
     if (!output) { return }
 
     return Object.keys(output).map((propName) => {
+      if (ignore && ignore.includes(propName)) { return null }
       return (
         <li className='log-output-item'>
           <span>{propName}:</span>
