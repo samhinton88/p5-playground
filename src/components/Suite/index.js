@@ -3,6 +3,7 @@ import P5Wrapper from 'react-p5-wrapper';
 import Log from '../Log';
 import ControlPanel from '../ControlPanel';
 import { test } from '../../sketches';
+import './style.css';
 
 
 class Suite extends Component {
@@ -46,7 +47,7 @@ class Suite extends Component {
     const { sketch, sketchName } = this.props;
 
     return (
-      <div className="App">
+      <div className="Suite">
         <Log output={this.state} title={sketchName} ignore={['time']}></Log>
         <P5Wrapper 
           sketch={sketch} 
