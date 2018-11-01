@@ -57,14 +57,8 @@ export const test = (p) => {
     const  dirY = (p.mouseY - p.height / 2) ;
 
     p.background(50);
-    p.pointLight(254, 254, 254, -xLightPos, -yLightPos, 1);
-    p.ambientLight(200)
-
-    p.ambientMaterial(250)
     p.push();
-    
     stillSphereMedium(p)({translate: [x, y, z], rotateX, rotateY, fill: [120, 20, 20]});
-
     p.pop();
 
   };

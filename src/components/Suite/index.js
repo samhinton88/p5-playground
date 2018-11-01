@@ -13,7 +13,6 @@ class Suite extends Component {
     coords: { x: 0, y: 0, z: 0 },
     rotateX: 0,
     rotateY: 0,
-    sketchName: 'sphere',
     xLightPos: 0,
     yLightPos: 0
   }
@@ -25,16 +24,6 @@ class Suite extends Component {
       })},
       16
     )
-  }
-
-  changeRate = (direction) => {
-    const { rate } = this.state;
-    this.setState({rate: rate + (direction * 0.25) })
-  }
-
-  changeScale = (direction) => {
-    const { scale } = this.state;
-    this.setState({ scale: scale + (direction * 1)})
   }
 
   handleCommand = (attrName, direction, parentAttr) => {
@@ -66,11 +55,6 @@ class Suite extends Component {
         <ul>
           <ControlPanel attributes={this.state} cb={this.handleCommand} blocked={['time', 'sketchName']}/>
         </ul>
-        <div>
-          <input onChange={({target: {value }}) => this.setState({xLightPos: Number(value)})}></input>
-          <input onChange={({target: {value }}) => this.setState({yLightPos: Number(value)})}></input>
-
-        </div>
       </div>
     );
   }

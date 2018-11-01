@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Suite from './components/Suite';
-import { test } from './sketches';
+import { test, directionalLight, circleCluster, simulateParticleSystem, text } from './sketches';
 import './App.css';
 
 class App extends Component {
@@ -9,7 +9,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Suite sketch={test} sketchName={'Stationary sphere'}/>
+        <Suite sketch={text} sketchName={'Text'}/>
       </div>
     );
   }
