@@ -30,12 +30,34 @@ class App extends Component {
 
     this.setState({ activeSketch: result });
   }
+
+  renderPanel = () => {
+    const { sketches } = this.state;
+
+    const switchSketch = (sketch) => {
+
+      this.setState({ activeSketch: sketch })
+    }
+
+    if(!sketches) { return }
+
+    return sketches.map((sketch) => {
+      return (
+        <button 
+          onClick={() => switchSketch(sketch)}
+        >
+          {sketch.name}
+        </button>
+      )
+    })
+  }
   
   render() {
     const { activeSketch: { name, sketch} } = this.state;
 
     return (
       <div className="App">
+        {this.renderPanel()}
         <input className='sketch-name-input' onChange={this.handleSketchNameInput}/>
         <Suite sketch={sketch} sketchName={name}/>
       </div>
